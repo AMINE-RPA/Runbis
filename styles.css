@@ -148,6 +148,44 @@ section {
   background-color: #4caf50; /* Vert tropical */
 }
 
+/* Styles pour la carte de profil */
+.profile-card {
+  text-align: center;
+  border: 1px solid #ddd;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.profile-logo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1rem;
+}
+
+.profile-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #000000;
+  margin-bottom: 0.5rem;
+}
+
+.profile-email {
+  font-size: 1rem;
+  color: #555555;
+  text-decoration: none;
+}
+
+.profile-email:hover {
+  text-decoration: underline;
+  color: #f0a700; /* Jaune vif */
+  }
+
 /* Footer */
 footer {
   background-color: #1b1b1b;
