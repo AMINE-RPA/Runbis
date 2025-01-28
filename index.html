@@ -16,6 +16,16 @@
         <li><a href="#about">À propos</a></li>
         <li><a href="#drinks">Nos Boissons</a></li>
         <li><a href="#contact">Contact</a></li>
+        <li>
+
+<div id="cart-modal" style="display: none; position: fixed; top: 20%; left: 50%; transform: translate(-50%, -20%); background: white; padding: 20px; border: 1px solid #ccc; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); z-index: 1000;">
+  <h3>Votre panier</h3>
+  <ul id="cart-items"></ul>
+  <button onclick="closeCart()">Fermer</button>
+</div>
+<div id="cart-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 999;" onclick="closeCart()"></div>
+          
+        </li>
       </ul>
     </nav>
   </header>
@@ -30,20 +40,23 @@
       <h2>Nos Boissons</h2>
       <div class="drink-list">
         <div class="drink">
-          <img src="boisson1.jpg" alt="Limonade maison">
-          <h3>Limonade Maison</h3>
-          <p>Une boisson rafraîchissante à base de citrons frais.</p>
+  <h3>Nom de la boisson</h3>
+  <p>Description de la boisson</p>
+  <input type="number" class="quantity" value="1" min="1">
+  <button class="add-to-cart" data-drink-name="Nom de la boisson">Ajouter au panier</button>
         </div>
         <div class="drink">
-          <img src="boisson2.jpg" alt="Thé glacé">
-          <h3>Thé Glacé</h3>
-          <p>Un thé glacé naturel infusé avec des fruits de saison.</p>
-        </div>
+  <h3>Nom de la boisson</h3>
+  <p>Description de la boisson</p>
+  <input type="number" class="quantity" value="1" min="1">
+  <button class="add-to-cart" data-drink-name="Nom de la boisson">Ajouter au panier</button>
+</div>
         <div class="drink">
-          <img src="boisson3.jpg" alt="Smoothie">
-          <h3>Smoothie aux Fruits</h3>
-          <p>Un mélange onctueux de fruits frais et de yaourt.</p>
-        </div>
+  <h3>Nom de la boisson</h3>
+  <p>Description de la boisson</p>
+  <input type="number" class="quantity" value="1" min="1">
+  <button class="add-to-cart" data-drink-name="Nom de la boisson">Ajouter au panier</button>
+</div>
       </div>
     </section>
 
@@ -74,5 +87,55 @@
   <footer>
     <p>&copy; 2025 Runbis. Tous droits réservés.</p>
   </footer>
+
+  <script>
+  const cart = [];
+
+  // Ajout au panier
+  document.querySelectorAll(".add-to-cart").forEach(button => {
+    button.addEventListener("click", () => {
+      const drinkName = button.getAttribute("data-drink-name");
+      const quantity = button.parentElement.querySelector(".quantity").value;
+
+      // Vérifie si la boisson est déjà dans le panier
+      const existingItem = cart.find(item => item.name === drinkName);
+      if (existingItem) {
+        existingItem.quantity += parseInt(quantity);
+      } else {
+        cart.push({ name: drinkName, quantity: parseInt(quantity) });
+      }
+
+      updateCart();
+    });
+  });
+
+  // Mise à jour de l'affichage du panier
+  function updateCart() {
+    const cartItems = document.getElementById("cart-items");
+    cartItems.innerHTML = ""; // Vide le panier actuel
+    cart.forEach(item => {
+      const li = document.createElement("li");
+      li.textContent = `${item.name} - Quantité : ${item.quantity}`;
+      cartItems.appendChild(li);
+    });
+
+    showCart();
+  }
+
+  // Affiche la fenêtre de panier
+  function showCart() {
+    document.getElementById("cart-modal").style.display = "block";
+    document.getElementById("cart-overlay").style.display = "block";
+  }
+
+  // Ferme la fenêtre de panier
+  function closeCart() {
+    document.getElementById("cart-modal").style.display = "none";
+    document.getElementById("cart-overlay").style.display = "none";
+  }
+  </script>
 </body>
+  
 </html>
+
+
