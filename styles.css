@@ -5,12 +5,15 @@ body {
   padding: 0;
   line-height: 1.6;
   background-color: #1b1b1b; /* Noir profond */
-  color: #ffffff; /* Texte blanc pour contraste */
+  color: #ffffff; /* Texte blanc */
+  background-image: url('background-leaves.png'); /* Image subtile de plantes */
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 header {
-  background-color: #f0a700; /* Jaune vif (inspiration du soleil dans le logo) */
-  color: #1b1b1b; /* Texte noir pour contraste */
+  background-color: #f0a700; /* Jaune vif */
+  color: #1b1b1b; /* Noir */
   padding: 1rem 0;
   text-align: center;
 }
@@ -30,7 +33,7 @@ nav ul {
 }
 
 nav a {
-  color: #1b1b1b; /* Noir profond */
+  color: #1b1b1b; /* Noir */
   text-decoration: none;
   font-weight: bold;
 }
@@ -47,8 +50,12 @@ section {
 }
 
 #about {
-  background-color: #f4f4f4; /* Gris clair pour contraste */
-  color: #333333; /* Texte noir */
+  background-color: rgba(244, 244, 244, 0.9); /* Fond translucide */
+  color: #333333;
+  border-radius: 8px;
+  margin: 1rem auto;
+  max-width: 90%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 #drinks .drink-list {
@@ -56,17 +63,21 @@ section {
   justify-content: center;
   gap: 1.5rem;
   flex-wrap: wrap;
+  background: rgba(0, 128, 0, 0.1); /* Vert translucide */
+  padding: 2rem;
+  border-radius: 10px;
 }
 
 .drink {
   background: #232323; /* Fond sombre */
-  border: 1px solid #f0a700; /* Contour jaune vif */
+  border: 2px solid #4caf50; /* Contour vert tropical */
   border-radius: 8px;
   padding: 1rem;
   max-width: 300px;
   text-align: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   transition: transform 0.2s ease-in-out;
+  position: relative;
 }
 
 .drink:hover {
@@ -83,19 +94,32 @@ section {
 }
 
 .drink p {
-  color: #e8e8e8; /* Texte légèrement grisé */
+  color: #e8e8e8;
+}
+
+.drink::after {
+  content: '🌿'; /* Icône de verdure */
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  font-size: 1.5rem;
+  color: #4caf50; /* Vert tropical */
 }
 
 #contact form {
   max-width: 600px;
   margin: 0 auto;
   text-align: left;
+  background: rgba(255, 255, 255, 0.9); /* Fond translucide */
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 #contact form label {
   display: block;
   margin: 0.5rem 0 0.2rem;
-  color: #f0a700; /* Texte jaune */
+  color: #4caf50; /* Vert tropical */
 }
 
 #contact form input,
@@ -121,13 +145,12 @@ section {
 }
 
 #contact form button:hover {
-  background-color: #f0a700; /* Jaune vif */
-  color: #1b1b1b;
+  background-color: #4caf50; /* Vert tropical */
 }
 
 /* Footer */
 footer {
-  background-color: #1b1b1b; /* Noir profond */
+  background-color: #1b1b1b;
   color: #ffffff;
   text-align: center;
   padding: 1rem;
@@ -140,5 +163,18 @@ h2 {
 }
 
 h3, label {
-  color: #f0a700; /* Jaune vif */
+  color: #4caf50; /* Vert tropical */
+}
+
+/* Effet plantes */
+.drink-list::before {
+  content: '';
+  background: url('plants-decor.png'); /* Image décorative de plantes */
+  background-size: contain;
+  background-repeat: no-repeat;
+  display: block;
+  width: 100%;
+  height: 150px;
+  margin-bottom: -50px;
+  opacity: 0.7;
 }
