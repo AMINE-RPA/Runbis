@@ -16,21 +16,19 @@
         <li><a href="#about">À propos</a></li>
         <li><a href="#drinks">Nos Boissons</a></li>
         <li><a href="#contact">Contact</a></li>
-        <li>
+        <li><button id="view-cart-button" onclick="showCart()">Voir le panier</button></li>
+      </ul>
+    </nav>
+  </header>
 
-<div id="cart-modal" style="display: none; position: fixed; top: 20%; left: 50%; transform: translate(-50%, -20%); background: white; padding: 20px; border: 1px solid #ccc; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); z-index: 1000;">
+  <main>
+    <div id="cart-modal" style="display: none; position: fixed; top: 20%; left: 50%; transform: translate(-50%, -20%); background: white; padding: 20px; border: 1px solid #ccc; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); z-index: 1000;">
   <h3>Votre panier</h3>
   <ul id="cart-items"></ul>
   <button onclick="closeCart()">Fermer</button>
 </div>
 <div id="cart-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 999;" onclick="closeCart()"></div>
           
-        </li>
-      </ul>
-    </nav>
-  </header>
-
-  <main>
     <section id="about">
       <h2>À propos de nous</h2>
       <p>Découvrez nos délicieuses boissons faites maison, préparées avec amour et des ingrédients de qualité.</p>
@@ -89,51 +87,50 @@
   </footer>
 
   <script>
-  const cart = [];
+  const cart = []; // Stocke les articles du panier
 
-  // Ajout au panier
+  // Ajoute un article au panier
   document.querySelectorAll(".add-to-cart").forEach(button => {
     button.addEventListener("click", () => {
       const drinkName = button.getAttribute("data-drink-name");
       const quantity = button.parentElement.querySelector(".quantity").value;
 
-      // Vérifie si la boisson est déjà dans le panier
+      // Vérifie si l'article existe déjà dans le panier
       const existingItem = cart.find(item => item.name === drinkName);
       if (existingItem) {
-        existingItem.quantity += parseInt(quantity);
+        existingItem.quantity += parseInt(quantity); // Ajoute la quantité
       } else {
         cart.push({ name: drinkName, quantity: parseInt(quantity) });
       }
 
-      updateCart();
+      updateCart(); // Met à jour l'affichage du panier
+      showCart(); // Affiche automatiquement le panier
     });
   });
 
-  // Mise à jour de l'affichage du panier
+  // Met à jour le contenu du panier
   function updateCart() {
     const cartItems = document.getElementById("cart-items");
-    cartItems.innerHTML = ""; // Vide le panier actuel
+    cartItems.innerHTML = ""; // Réinitialise la liste des articles
     cart.forEach(item => {
       const li = document.createElement("li");
       li.textContent = `${item.name} - Quantité : ${item.quantity}`;
       cartItems.appendChild(li);
     });
-
-    showCart();
   }
 
-  // Affiche la fenêtre de panier
+  // Affiche la fenêtre du panier
   function showCart() {
     document.getElementById("cart-modal").style.display = "block";
     document.getElementById("cart-overlay").style.display = "block";
   }
 
-  // Ferme la fenêtre de panier
+  // Ferme la fenêtre du panier
   function closeCart() {
     document.getElementById("cart-modal").style.display = "none";
     document.getElementById("cart-overlay").style.display = "none";
   }
-  </script>
+</script>
 </body>
   
 </html>
