@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Boissons Maison</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <h1>Boissons Maison</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#about">À propos</a></li>
+        <li><a href="#drinks">Nos Boissons</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="about">
+      <h2>À propos de nous</h2>
+      <p>Découvrez nos délicieuses boissons faites maison, préparées avec amour et des ingrédients de qualité.</p>
+    </section>
+
+    <section id="drinks">
+      <h2>Nos Boissons</h2>
+      <div class="drink-list">
+        <div class="drink">
+          <img src="boisson1.jpg" alt="Limonade maison">
+          <h3>Limonade Maison</h3>
+          <p>Une boisson rafraîchissante à base de citrons frais.</p>
+        </div>
+        <div class="drink">
+          <img src="boisson2.jpg" alt="Thé glacé">
+          <h3>Thé Glacé</h3>
+          <p>Un thé glacé naturel infusé avec des fruits de saison.</p>
+        </div>
+        <div class="drink">
+          <img src="boisson3.jpg" alt="Smoothie">
+          <h3>Smoothie aux Fruits</h3>
+          <p>Un mélange onctueux de fruits frais et de yaourt.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contactez-nous</h2>
+      <p>Envoyez-nous un message pour en savoir plus sur nos boissons maison.</p>
+      <form>
+        <label for="name">Nom</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+
+        <button type="submit">Envoyer</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Boissons Maison. Tous droits réservés.</p>
+  </footer>
+</body>
+</html>
