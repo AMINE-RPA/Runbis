@@ -1,3 +1,62 @@
+
+/* Corps de la page */
+body {
+  background: linear-gradient(to bottom, #87CEEB, #E2D8A5); /* Dégradé ciel à sable */
+  background-image: url('https://your-image-url/palm-trees-background.jpg'); /* Image de fond */
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  font-family: 'Poppins', sans-serif; /* Police moderne et lisible */
+  color: #333; /* Couleur principale du texte */
+  margin: 0;
+  padding: 0;
+  border: 20px solid transparent; /* Bordure avec des feuilles */
+  border-image: url('https://your-image-url/tropical-border.png') 30 round;
+}
+
+/* En-tête */
+header {
+  background: #FF6F61; /* Couleur tropicale pour l'en-tête */
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+header h1 {
+  font-family: 'Pacifico', cursive; /* Police exotique */
+  font-size: 36px;
+  margin: 0;
+}
+
+/* Boissons (div drinks) */
+.drink {
+  background: rgba(255, 255, 255, 0.8); /* Fond semi-transparent */
+  border: 2px solid #34C759; /* Bordure verte rappelant les feuilles */
+  border-radius: 15px;
+  padding: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  margin: 10px;
+  text-align: center;
+}
+
+.drink h3 {
+  color: #FF6F61; /* Couleur tropicale pour les titres */
+  font-family: 'Pacifico', cursive;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.drink p {
+  font-size: 16px;
+  color: #555; /* Texte secondaire */
+  margin-bottom: 15px;
+}
+
+.drink input.quantity {
+  width
+
+/*css externe test*/
 /* Corps de la page */
 body {
   font-family: 'Arial', sans-serif;
