@@ -1,59 +1,99 @@
-/* Styles généraux / body { font-family: 'Arial', sans-serif; margin: 0; padding: 0; line-height: 1.6; background-color: #1b1b1b; / Noir profond / color: #ffffff; / Texte blanc / background-image: url('background-leaves.png'); / Image subtile de plantes */ background-size: cover; background-attachment: fixed; }
+/* Importation des polices */
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600&display=swap');
 
-header { background-color: #990099; /* Jaune vif / color: #1b1b1b; / Noir */ padding: 1rem 0; text-align: center; }
+:root {
+    --primary-color: #FF914D;  /* Orange tropical */
+    --secondary-color: #0077B6; /* Bleu lagon */
+    --background-color: #F8F9FA;
+    --text-color: #333;
+    --font-title: 'Pacifico', cursive;
+    --font-body: 'Poppins', sans-serif;
+}
 
-header .logo h1 { margin: 0; font-family: 'Verdana', sans-serif; }
+/* Réinitialisation des marges et padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-body);
+}
 
-nav ul { list-style: none; padding: 0; margin: 0; display: flex; justify-content: center; gap: 1rem; }
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
 
-nav a { color: #1b1b1b; /* Noir */ text-decoration: none; font-weight: bold; }
+/* ===== HEADER ===== */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
-nav a:hover { text-decoration: underline; color: #990099; /* Rouge vif */ }
+.logo h1 {
+    font-family: var(--font-title);
+    font-size: 28px;
+}
 
-/* Section générale */ section { padding: 2rem; text-align: center; }
+nav ul {
+    display: flex;
+    list-style: none;
+}
 
-#about { background-color: rgba(244, 244, 244, 0.9); /* Fond translucide */ color: #333333; border-radius: 8px; margin: 1rem auto; max-width: 90%; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); }
+nav ul li {
+    margin: 0 15px;
+}
 
-#drinks .drink-list { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; background: rgba(0, 128, 0, 0.1); /* Vert translucide */ padding: 2rem; border-radius: 10px; }
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    transition: color 0.3s;
+}
 
-.drink { background: #232323; /* Fond sombre / border: 2px solid #4caf50; / Contour vert tropical */ border-radius: 8px; padding: 1rem; max-width: 300px; text-align: center; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); transition: transform 0.2s ease-in-out; position: relative; }
+nav ul li a:hover {
+    color: var(--primary-color);
+}
 
-.drink:hover { transform: scale(1.05); }
+/* ===== SECTIONS ===== */
+section {
+    padding: 60px 5%;
+    text-align: center;
+}
 
-.drink img { max-width: 100%; border-radius: 8px; }
+h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+}
 
-.drink h3 { color: #ff5757; /* Rouge vif */ }
+/* ===== DRINK LIST ===== */
+.drink-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
 
-.drink p { color: #e8e8e8; }
+.drink {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 250px;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+}
 
-.drink::after { content: '🌿'; /* Icône de verdure / position: absolute; top: -10px; right: -10px; font-size: 1.5rem; color: #4caf50; / Vert tropical */ }
+.drink:hover {
+    transform: scale(1.05);
+}
 
-#contact form { max-width: 600px; margin: 0 auto; text-align: left; background: rgba(255, 255, 255, 0.9); /* Fond translucide */ padding: 1.5rem; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); }
-
-#contact form label { display: block; margin: 0.5rem 0 0.2rem; color: #4caf50; /* Vert tropical */ }
-
-#contact form input, #contact form textarea { width: 100%; padding: 0.5rem; margin-bottom: 1rem; border: 1px solid #444444; border-radius: 4px; background-color: #1b1b1b; color: #ffffff; }
-
-#contact form button { background-color: #ff5757; /* Rouge vif */ color: #ffffff; border: none; padding: 0.7rem 1.5rem; cursor: pointer; border-radius: 4px; font-size: 1rem; transition: background-color 0.3s; }
-
-#contact form button:hover { background-color: #4caf50; /* Vert tropical */ }
-
-/* Styles pour la carte de profil */ .profile-card { text-align: center; border: 1px solid #ddd; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); background-color: #ffffff; max-width: 400px; margin: 0 auto; }
-
-.profile-logo { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-bottom: 1rem; }
-
-.profile-name { font-size: 1.5rem; font-weight: bold; color: #000000; margin-bottom: 0.5rem; }
-
-.profile-email { font-size: 1rem; color: #555555; text-decoration: none; }
-
-.profile-email:hover { text-decoration: underline; color: #f0a700; /* Jaune vif */ }
-
-/* Footer */ footer { background-color: #1b1b1b; color: #ffffff; text-align: center; padding: 1rem; margin-top: 2rem; }
-
-/* Ajout d'éléments tropicaux / h2 { color: #ff5757; / Rouge tropical */ }
-
-h3, label { color: #4caf50; /* Vert tropical */ }
-
-/* Effet plantes / .drink-list::before { content: ''; background: url('plants-decor.png'); / Image décorative de plantes */ background-size: contain; background-repeat: no-repeat; display: block; width: 100%; height: 150px; margin-bottom: -50px; opacity: 0.7; }
-
-               
+button.add-to-cart {
+    background-color: var(--secondary-color);
+    color: white;
+    border: none
