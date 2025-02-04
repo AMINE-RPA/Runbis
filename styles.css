@@ -241,7 +241,7 @@ section {
 
 #cart h2 {
   background: #FF6F61; /* Rouge tropical */
-  color: white;
+  color: black;
   text-align: center;
   padding: 10px 0;
   margin: 0;
@@ -262,7 +262,7 @@ section {
 }
 
 #cart ul li span {
-  color: #333;
+  color: black ;
 }
 
 #cart button.close-cart {
