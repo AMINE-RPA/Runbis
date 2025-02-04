@@ -1,56 +1,258 @@
 /* Corps de la page */
 body {
-  background: linear-gradient(to bottom, #87CEEB, #E2D8A5); /* Dégradé ciel à sable */
-  background-image: url('https://your-image-url/palm-trees-background.jpg'); /* Image de fond */
-  background-size: cover;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  font-family: 'Poppins', sans-serif; /* Police moderne et lisible */
-  color: #333; /* Couleur principale du texte */
+  font-family: 'Arial', sans-serif;
   margin: 0;
   padding: 0;
-  border: 20px solid transparent; /* Bordure avec des feuilles */
-  border-image: url('https://your-image-url/tropical-border.png') 30 round;
+  line-height: 1.6;
+  background-color: #1b1b1b; /* Noir profond */
+  color: #ffffff; /* Texte blanc */
+  background-image: url('background-leaves.png'); /* Image subtile de plantes */
+  background-size: cover;
+  background-attachment: fixed;
+  border: 20px solid transparent;
+  border-image: url('tropical-border.png') 30 round;
 }
 
 /* En-tête */
 header {
-  background: #FF6F61; /* Couleur tropicale pour l'en-tête */
-  color: white;
+  background-color: #990099; /* Violet tropical */
+  color: #1b1b1b; /* Noir */
+  padding: 1rem 0;
   text-align: center;
-  padding: 20px 0;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
-header h1 {
-  font-family: 'Pacifico', cursive; /* Police exotique */
-  font-size: 36px;
+header .logo h1 {
   margin: 0;
+  font-family: 'Verdana', sans-serif;
 }
 
-/* Boissons (div drinks) */
+/* Navigation */
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+nav a {
+  color: #1b1b1b; /* Noir */
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav a:hover {
+  text-decoration: underline;
+  color: #990099; /* Violet vif */
+}
+
+/* Section générale */
+section {
+  padding: 2rem;
+  text-align: center;
+}
+
+#about {
+  background-color: rgba(244, 244, 244, 0.9); /* Fond translucide */
+  color: #333333;
+  border-radius: 8px;
+  margin: 1rem auto;
+  max-width: 90%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Liste des boissons */
+#drinks .drink-list {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  background: rgba(0, 128, 0, 0.1); /* Vert translucide */
+  padding: 2rem;
+  border-radius: 10px;
+  position: relative;
+}
+
 .drink {
-  background: rgba(255, 255, 255, 0.8); /* Fond semi-transparent */
-  border: 2px solid #34C759; /* Bordure verte rappelant les feuilles */
+  background: rgba(255, 255, 255, 0.8); /* Fond clair */
+  border: 2px solid #34C759; /* Bordure verte tropicale */
   border-radius: 15px;
   padding: 15px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-  margin: 10px;
   text-align: center;
+  max-width: 300px;
+  margin: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease-in-out;
+  position: relative;
+}
+
+.drink:hover {
+  transform: scale(1.05);
+}
+
+.drink img {
+  max-width: 100%;
+  border-radius: 8px;
 }
 
 .drink h3 {
-  color: #FF6F61; /* Couleur tropicale pour les titres */
+  color: #FF6F61; /* Rouge tropical */
   font-family: 'Pacifico', cursive;
-  font-size: 24px;
-  margin-bottom: 10px;
+  margin: 0.5rem 0;
 }
 
 .drink p {
-  font-size: 16px;
   color: #555; /* Texte secondaire */
-  margin-bottom: 15px;
+  font-size: 16px;
 }
 
 .drink input.quantity {
-  width
+  width: 60px;
+  margin-top: 10px;
+  text-align: center;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.drink button.add-to-cart {
+  margin-top: 10px;
+  background: #FF6F61; /* Rouge tropical */
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.drink button.add-to-cart:hover {
+  background: #34C759; /* Vert tropical */
+}
+
+/* Effet plantes */
+.drink-list::before {
+  content: '';
+  background: url('plants-decor.png'); /* Image décorative de plantes */
+  background-size: contain;
+  background-repeat: no-repeat;
+  display: block;
+  width: 100%;
+  height: 150px;
+  margin-bottom: -50px;
+  opacity: 0.7;
+}
+
+/* Panier */
+#cart {
+  position: fixed;
+  top: 10%;
+  right: 5%;
+  width: 300px;
+  max-height: 400px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 2px solid #34C759;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  overflow-y: auto;
+  display: none; /* Caché par défaut */
+}
+
+#cart.active {
+  display: block; /* Afficher lorsqu'il est activé */
+}
+
+#cart h2 {
+  background: #FF6F61; /* Rouge tropical */
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  margin: 0;
+  border-radius: 15px 15px 0 0;
+}
+
+#cart ul {
+  list-style: none;
+  padding: 10px;
+  margin: 0;
+}
+
+#cart ul li {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+#cart ul li span {
+  color: #333;
+}
+
+#cart button.close-cart {
+  width: 100%;
+  background: #34C759;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 0 0 15px 15px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-top: 10px;
+}
+
+#cart button.close-cart:hover {
+  background: #FF6F61;
+}
+
+/* Formulaire de contact */
+#contact form {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: left;
+  background: rgba(255, 255, 255, 0.9); /* Fond translucide */
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+#contact form label {
+  display: block;
+  margin: 0.5rem 0 0.2rem;
+  color: #4caf50; /* Vert tropical */
+}
+
+#contact form input,
+#contact form textarea {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid #444444;
+  border-radius: 4px;
+  background-color: #1b1b1b;
+  color: #ffffff;
+}
+
+#contact form button {
+  background-color: #ff5757; /* Rouge vif */
+  color: #ffffff;
+  border: none;
+  padding: 0.7rem 1.5rem;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+}
+
+#contact form button:hover {
+  background-color: #4caf50; /* Vert tropical */
+}
+
+/* Footer */
+footer {
+  background-color: #1b1b1b;
+  color: #ffffff;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
+}
