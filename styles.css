@@ -16,7 +16,7 @@ body {
 /* En-tête */
 header {
   background-color: #F72585; /* Violet tropical */
-  color: #1b1b1b; /* Noir */
+  color: white; /* Noir */
   padding: 1rem 0;
   text-align: center;
 }
