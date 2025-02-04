@@ -1,99 +1,56 @@
-/* Importation des polices */
-@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600&display=swap');
-
-:root {
-    --primary-color: #FF914D;  /* Orange tropical */
-    --secondary-color: #0077B6; /* Bleu lagon */
-    --background-color: #F8F9FA;
-    --text-color: #333;
-    --font-title: 'Pacifico', cursive;
-    --font-body: 'Poppins', sans-serif;
-}
-
-/* Réinitialisation des marges et padding */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: var(--font-body);
-}
-
+/* Corps de la page */
 body {
-    background-color: var(--background-color);
-    color: var(--text-color);
+  background: linear-gradient(to bottom, #87CEEB, #E2D8A5); /* Dégradé ciel à sable */
+  background-image: url('https://your-image-url/palm-trees-background.jpg'); /* Image de fond */
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  font-family: 'Poppins', sans-serif; /* Police moderne et lisible */
+  color: #333; /* Couleur principale du texte */
+  margin: 0;
+  padding: 0;
+  border: 20px solid transparent; /* Bordure avec des feuilles */
+  border-image: url('https://your-image-url/tropical-border.png') 30 round;
 }
 
-/* ===== HEADER ===== */
+/* En-tête */
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 5%;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    color: white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background: #FF6F61; /* Couleur tropicale pour l'en-tête */
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
-.logo h1 {
-    font-family: var(--font-title);
-    font-size: 28px;
+header h1 {
+  font-family: 'Pacifico', cursive; /* Police exotique */
+  font-size: 36px;
+  margin: 0;
 }
 
-nav ul {
-    display: flex;
-    list-style: none;
-}
-
-nav ul li {
-    margin: 0 15px;
-}
-
-nav ul li a {
-    text-decoration: none;
-    color: white;
-    font-weight: 600;
-    transition: color 0.3s;
-}
-
-nav ul li a:hover {
-    color: var(--primary-color);
-}
-
-/* ===== SECTIONS ===== */
-section {
-    padding: 60px 5%;
-    text-align: center;
-}
-
-h2 {
-    font-size: 32px;
-    margin-bottom: 20px;
-    color: var(--primary-color);
-}
-
-/* ===== DRINK LIST ===== */
-.drink-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-}
-
+/* Boissons (div drinks) */
 .drink {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: 250px;
-    text-align: center;
-    transition: transform 0.3s ease-in-out;
+  background: rgba(255, 255, 255, 0.8); /* Fond semi-transparent */
+  border: 2px solid #34C759; /* Bordure verte rappelant les feuilles */
+  border-radius: 15px;
+  padding: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  margin: 10px;
+  text-align: center;
 }
 
-.drink:hover {
-    transform: scale(1.05);
+.drink h3 {
+  color: #FF6F61; /* Couleur tropicale pour les titres */
+  font-family: 'Pacifico', cursive;
+  font-size: 24px;
+  margin-bottom: 10px;
 }
 
-button.add-to-cart {
-    background-color: var(--secondary-color);
-    color: white;
-    border: none
+.drink p {
+  font-size: 16px;
+  color: #555; /* Texte secondaire */
+  margin-bottom: 15px;
+}
+
+.drink input.quantity {
+  width
