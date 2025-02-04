@@ -46,8 +46,50 @@ nav a:hover {
   text-decoration: underline;
   color: #990099; /* Violet vif */
 }
-#view-cart-button{
-  border-radius: 15px; 
+
+/* Style du bouton panier */
+#view-cart-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff;
+    background: linear-gradient(45deg, #ff9800, #ff5722); /* Dégradé orange */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    text-align: center;
+    text-decoration: none;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    gap: 8px; /* Espacement entre l'icône et le texte */
+}
+
+/* Icône panier */
+#view-cart-button i {
+    font-size: 20px;
+}
+
+/* Effet au survol */
+#view-cart-button:hover {
+    background: linear-gradient(45deg, #e68900, #e64a19);
+    transform: translateY(-2px);
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Effet lors du clic */
+#view-cart-button:active {
+    transform: translateY(0);
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Bouton désactivé */
+#view-cart-button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    box-shadow: none;
 }
 
 /* Styles généraux pour les boutons */
