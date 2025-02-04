@@ -48,7 +48,9 @@ nav a:hover {
   text-decoration: underline;
   color: #990099; /* Violet vif */
 }
-
+main{
+  background-color: black ;
+}
 /* Style du bouton panier */
 #view-cart-button {
     display: flex;
