@@ -208,7 +208,7 @@ section {
 #drinks .drink-list {
   display: flex;
   justify-content: center;
- /* gap: 1.5rem;*/
+  gap: 1.5rem;
   flex-wrap: wrap;
   background: rgba(0, 128, 0, 0.1); /* Vert translucide */
   /*padding: 2rem;*/
