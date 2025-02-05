@@ -65,7 +65,7 @@ body {
   font-family: 'Arial', sans-serif;
   margin: 0;
   padding: 0;
-  line-height: 1.6;
+  /*line-height: 1.6;*/
   background-color: #1b1b1b; /* Noir profond */
   color: #ffffff; /* Texte blanc */
   background-image: url('background-leaves.png'); /* Image subtile de plantes */
