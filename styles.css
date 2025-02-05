@@ -211,14 +211,14 @@ section {
   gap: 1.5rem;
   flex-wrap: wrap;
   background: rgba(0, 128, 0, 0.1); /* Vert translucide */
-  /*padding: 2rem;*/
+  padding: 2rem;
   border-radius: 10px;
   position: relative;
 }
-
-#drink {
-  background: rgba(255, 255, 255, 0.8); /* Fond clair */
-  border: 2px solid #34C759; /* Bordure verte tropicale */
+/*
+.drink {
+  background: rgba(255, 255, 255, 0.8); /* Fond clair *
+  border: 2px solid #34C759; /* Bordure verte tropicale *
   border-radius: 15px;
   padding: 15px;
   text-align: center;
@@ -228,6 +228,7 @@ section {
   transition: transform 0.2s ease-in-out;
   position: relative;
 }
+*/
 
 .drink:hover {
   transform: scale(1.05);
