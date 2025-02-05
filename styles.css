@@ -349,7 +349,7 @@ section {
 #contact form {
   max-width: 600px;
   margin: 0 auto;
-  text-align: left;
+  text-align: center ;
   background: rgba(255, 255, 255, 0.9); /* Fond translucide */
   padding: 1.5rem;
   border-radius: 10px;
