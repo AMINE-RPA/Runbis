@@ -200,6 +200,7 @@ section {
   color: #333333;
   border-radius: 8px;
   margin: 1rem auto;
+  padding: 2rem;
   max-width: 90%;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
