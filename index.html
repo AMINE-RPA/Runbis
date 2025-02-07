@@ -7,6 +7,13 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+
+  
 </head>
 <body>
   <header>
@@ -42,58 +49,10 @@
 
   
 
-  
-    <section id="drinks">
-      <h2>Nos Boissons</h2>
-      <div class="drink-list">
-
-       <div class="cardp">
-          <div class="cardp-image">
-            <img src="https://www.beeonature.com/wp-content/uploads/2022/03/hibiscus.jpg" alt="Product">
-          </div>
-          <div class="cardp-content">
-            <h3>boisson citron</h3>
-            <p>Garnier Pure Active Micellar Cleansing Water, 125 ml</p>
-            <div class="price">$10</div>
-            <div class="stars">
-                <span>★</span><span>★</span><span>★</span><span>★</span><span>☆</span>
-            </div>
-          </div>
-        <button class="cardp-button add-to-cart">ADD TO CART</button>
-       </div>
-        <div class="cardp">
-          <div class="cardp-image">
-            <img src="https://www.beeonature.com/wp-content/uploads/2022/03/hibiscus.jpg" alt="Product">
-          </div>
-          <div class="cardp-content">
-            <h3>boisson fruit rouge</h3>
-            <p>Garnier Pure Active Micellar Cleansing Water, 125 ml</p>
-            <div class="price">$5</div>
-            <div class="stars">
-                <span>★</span><span>★</span><span>★</span><span>★</span><span>☆</span>
-            </div>
-          </div>
-        <button class="cardp-button add-to-cart">ADD TO CART</button>
-        </div>  
-        <div class="cardp">
-          <div class="cardp-image">
-            <img src="https://www.beeonature.com/wp-content/uploads/2022/03/hibiscus.jpg" alt="Product">
-          </div>
-          <div class="cardp-content">
-            <h3>boisson citron</h3>
-            <p>Garnier Pure Active Micellar Cleansing Water, 125 ml</p>
-            <div class="price">$20</div>
-            <div class="stars">
-                <span>★</span><span>★</span><span>★</span><span>★</span><span>☆</span>
-            </div>
-          </div>
-        <button class="cardp-button add-to-cart">ADD TO CART</button>
-        </div>
-      </div>
-          
-      
-      
-    </section>
+<section id="drinks">
+    <h2>Nos Boissons</h2>
+    <div class="drink-list" id="product-list"></div>
+</section>
 
     <div class="profile-card">
   <img src="runbis974-20250117-0001.jpg" alt="Runbis Logo" class="profile-logo">
@@ -167,6 +126,52 @@
     document.getElementById("cart-modal").style.display = "none";
     document.getElementById("cart-overlay").style.display = "none";
   }
+
+
+  
+    // Initialisation de Supabase
+    const supabaseUrl = "https://votre-projet.supabase.co";
+    const supabaseKey = "votre-clé-anonyme";
+    const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+
+    async function fetchProducts() {
+      const { data: products, error } = await supabase.from("products").select("*");
+      if (error) {
+        console.error("Erreur de récupération des produits :", error);
+        return;
+      }
+      
+      const productList = document.getElementById("product-list");
+      productList.innerHTML = ""; // Vider la liste avant d'ajouter les produits
+      
+      products.forEach(product => {
+        const productCard = `
+          <div class="cardp">
+            <div class="cardp-image">
+              <img src="${product.image_url}" alt="${product.name}">
+            </div>
+            <div class="cardp-content">
+              <h3>${product.name}</h3>
+              <p>${product.description}</p>
+              <div class="price">${product.price} €</div>
+              <div class="stars">★★★★★</div>
+            </div>
+            <button class="cardp-button add-to-cart" data-drink-name="${product.name}">ADD TO CART</button>
+          </div>
+        `;
+        productList.innerHTML += productCard;
+      });
+    }
+
+    // Écoute les changements en temps réel
+    supabase.channel('products')
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'products' }, fetchProducts)
+      .subscribe();
+
+    fetchProducts(); // Charger les produits au chargement de la page
+  
+
+    
 </script>
 </body>
   
