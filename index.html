@@ -83,31 +83,11 @@
   </footer>
 
   <script>
-  const cart = []; // Stocke les articles du panier
+  const cart = [];
 
-  // Ajoute un article au panier
-  document.querySelectorAll(".add-to-cart").forEach(button => {
-    button.addEventListener("click", () => {
-      const drinkName = button.getAttribute("data-drink-name");
-      const quantity = button.parentElement.querySelector(".quantity").value;
-
-      // Vérifie si l'article existe déjà dans le panier
-      const existingItem = cart.find(item => item.name === drinkName);
-      if (existingItem) {
-        existingItem.quantity += parseInt(quantity); // Ajoute la quantité
-      } else {
-        cart.push({ name: drinkName, quantity: parseInt(quantity) });
-      }
-
-      updateCart(); // Met à jour l'affichage du panier
-      showCart(); // Affiche automatiquement le panier
-    });
-  });
-
-  // Met à jour le contenu du panier
   function updateCart() {
     const cartItems = document.getElementById("cart-items");
-    cartItems.innerHTML = ""; // Réinitialise la liste des articles
+    cartItems.innerHTML = "";
     cart.forEach(item => {
       const li = document.createElement("li");
       li.textContent = `${item.name} - Quantité : ${item.quantity}`;
@@ -115,35 +95,33 @@
     });
   }
 
-  // Affiche la fenêtre du panier
   function showCart() {
     document.getElementById("cart-modal").style.display = "block";
     document.getElementById("cart-overlay").style.display = "block";
   }
 
-  // Ferme la fenêtre du panier
   function closeCart() {
     document.getElementById("cart-modal").style.display = "none";
     document.getElementById("cart-overlay").style.display = "none";
   }
 
+  document.getElementById("view-cart-button").addEventListener("click", showCart);
 
-  
-    // Initialisation de Supabase
-    const supabaseUrl = "https://alisjqsbkrqapcjxyrwb.supabase.co";
-    const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFsaXNqcXNia3JxYXBjanh5cndiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzg5MDY3NzAsImV4cCI6MjA1NDQ4Mjc3MH0.LMWdQOAiHR506augtPBV-GN_rH7ipQGkP3qc5-SLiHI";
-    const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+  // Récupérer les produits depuis JSONBin
+  async function fetchProducts() {
+    const binId = "67ac3265acd3cb34a8deaac1"; // Remplace par ton ID JSONBin
+    const apiKey = "$2a$10$lsQYBX8I2jpoXqzfu0MI5uqMnOMUbgkL/i0wE7Gj7wUw5nAE1KqYe"; // Remplace par ton API Key JSONBin
 
-    async function fetchProducts() {
-      const { data: products, error } = await supabase.from("products").select("*");
-      if (error) {
-        console.error("Erreur de récupération des produits :", error);
-        return;
-      }
-      
+    try {
+      const response = await fetch(`https://api.jsonbin.io/v3/b/${binId}/latest`, {
+        headers: { "X-Master-Key": apiKey }
+      });
+      const data = await response.json();
+      const products = data.record.products;
+
       const productList = document.getElementById("product-list");
-      productList.innerHTML = ""; // Vider la liste avant d'ajouter les produits
-      
+      productList.innerHTML = "";
+
       products.forEach(product => {
         const productCard = `
           <div class="cardp">
@@ -154,25 +132,40 @@
               <h3>${product.name}</h3>
               <p>${product.description}</p>
               <div class="price">${product.price} €</div>
-              <div class="stars">★★★★★</div>
             </div>
-            <button class="cardp-button add-to-cart" data-drink-name="${product.name}">ADD TO CART</button>
+            <input type="number" class="quantity" value="1" min="1">
+            <button class="cardp-button add-to-cart" data-drink-name="${product.name}">Ajouter au panier</button>
           </div>
         `;
         productList.innerHTML += productCard;
       });
+
+      // Ajout au panier
+      document.querySelectorAll(".add-to-cart").forEach(button => {
+        button.addEventListener("click", () => {
+          const drinkName = button.getAttribute("data-drink-name");
+          const quantity = button.parentElement.querySelector(".quantity").value;
+
+          const existingItem = cart.find(item => item.name === drinkName);
+          if (existingItem) {
+            existingItem.quantity += parseInt(quantity);
+          } else {
+            cart.push({ name: drinkName, quantity: parseInt(quantity) });
+          }
+
+          updateCart();
+          showCart();
+        });
+      });
+
+    } catch (error) {
+      console.error("Erreur lors de la récupération des produits :", error);
     }
+  }
 
-    // Écoute les changements en temps réel
-    supabase.channel('products')
-      .on('postgres_changes', { event: '*', schema: 'public', table: 'products' }, fetchProducts)
-      .subscribe();
-
-    fetchProducts(); // Charger les produits au chargement de la page
+  fetchProducts();
+  </script>
   
-
-    
-</script>
 </body>
   
 </html>
