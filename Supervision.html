@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supervision des Boissons</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header>
+        <h1>Supervision des Boissons</h1>
+        <input type="text" id="search-bar" placeholder="Rechercher une boisson...">
+    </header>
+
+    <main>
+        <div class="content">
+            <section id="product-list">
+                <!-- Les boissons seront affichées ici -->
+            </section>
+
+            <aside id="edit-section">
+                <h2>Modifier une Boisson</h2>
+                <form id="edit-form">
+                    <label for="edit-name">Nom :</label>
+                    <input type="text" id="edit-name">
+                    
+                    <label for="edit-price">Prix :</label>
+                    <input type="number" id="edit-price">
+
+                    <label for="edit-description">Description :</label>
+                    <textarea id="edit-description"></textarea>
+
+                    <label for="edit-image">Image (URL) :</label>
+                    <input type="text" id="edit-image">
+
+                    <button type="button" id="save-button">Valider</button>
+                    <button type="button" id="delete-button">Supprimer</button>
+                </form>
+            </aside>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
