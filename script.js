@@ -19,7 +19,7 @@ const saveButton = document.getElementById("save-button");
 const deleteButton = document.getElementById("delete-button");
 
 let currentProductId = null;
-
+/*
 // Charger les produits depuis JSONBin
 async function loadProducts() {
     try {
@@ -32,7 +32,43 @@ async function loadProducts() {
         console.error("Erreur de chargement des produits:", error);
     }
 }
+*/
 
+ // Récupérer les produits depuis JSONBin
+  async function fetchProducts() {
+    const binId = "67ac3265acd3cb34a8deaac1"; // Remplace par ton ID JSONBin
+    const apiKey = "$2a$10$lsQYBX8I2jpoXqzfu0MI5uqMnOMUbgkL/i0wE7Gj7wUw5nAE1KqYe"; // Remplace par ton API Key JSONBin
+
+    try {
+      const response = await fetch(`https://api.jsonbin.io/v3/b/${JSON_BIN_ID}/latest`, {
+        headers: { "X-Master-Key": JSON_BIN_KEY }
+      });
+      const data = await response.json();
+      const products = data.record.products;
+
+      const productList = document.getElementById("product-list");
+      productList.innerHTML = "";
+
+      products.forEach(product => {
+        const productCard = `
+          <div class="cardp">
+            <div class="cardp-image">
+              <img src="${product.image_url}" alt="${product.name}">
+            </div>
+            <div class="cardp-content">
+              <h3>${product.name}</h3>
+              <p>${product.description}</p>
+              <div class="price">${product.price} €</div>
+            </div>
+            <input type="number" class="quantity" value="1" min="1">
+            <button class="cardp-button add-to-cart" data-drink-name="${product.name}">Ajouter au panier</button>
+          </div>
+        `;
+        productList.innerHTML += productCard;
+      });
+
+
+        
 // Affichage des produits sur la page
 function displayProducts(products) {
     productList.innerHTML = "";
