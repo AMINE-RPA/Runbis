@@ -1,4 +1,3 @@
-
 /* Styles généraux */
 body {
     font-family: 'Arial', sans-serif;
@@ -25,4 +24,144 @@ header h1 {
     max-width: 400px;
     padding: 10px;
     margin-top: 10px;
-    border
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Contenu principal */
+.content {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+/* Liste des boissons */
+#product-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    width: 60%;
+}
+
+/* Carte produit */
+.cardp {
+    width: 250px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center;
+}
+
+.cardp-image img {
+    width: 100%;
+    height: auto;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.cardp-content {
+    padding: 20px;
+}
+
+.cardp-content h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
+.cardp-content p {
+    font-size: 14px;
+    color: #777;
+    margin: 10px 0;
+}
+
+.price {
+    font-size: 20px;
+    font-weight: bold;
+    color: #60a960;
+    margin: 10px 0;
+}
+
+.cardp-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #60a960;
+    color: #fff;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.cardp-button:hover {
+    background-color: #4e8c4e;
+}
+
+/* Section d'édition */
+#edit-section {
+    width: 35%;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    color: #333;
+}
+
+#edit-section h2 {
+    text-align: center;
+}
+
+#edit-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#edit-form input, #edit-form textarea {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+#save-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+#delete-button {
+    background-color: #ff5757;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+#save-button:hover {
+    background-color: #0056b3;
+}
+
+#delete-button:hover {
+    background-color: #d43f3f;
+}
+
+/* Responsiveness */
+@media screen and (max-width: 768px) {
+    .content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #product-list {
+        width: 100%;
+        justify-content: center;
+    }
+
+    #edit-section {
+        width: 90%;
+        margin-top: 20px;
+    }
+}
