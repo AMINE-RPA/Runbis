@@ -4,9 +4,10 @@
 
 
 
-
-// Récupération des données depuis JSONBin
-const jsonBinUrl = "https://api.jsonbin.io/v3/b/TON_BIN_ID";
+// Variables JSONBin
+const JSON_BIN_ID = "TON_BIN_ID";
+const JSON_BIN_KEY = "TON_CLE_API";
+const JSON_BIN_URL = `https://api.jsonbin.io/v3/b/${JSON_BIN_ID}`;
 
 // Sélection des éléments HTML
 const productList = document.getElementById("product-list");
@@ -23,8 +24,8 @@ let currentProductId = null;
 // Charger les produits depuis JSONBin
 async function loadProducts() {
     try {
-        const response = await fetch(jsonBinUrl, {
-            headers: { "X-Master-Key": "TON_CLE_API" }
+        const response = await fetch(JSON_BIN_URL, {
+            headers: { "X-Master-Key": JSON_BIN_KEY }
         });
         const data = await response.json();
         displayProducts(data.record);
@@ -58,7 +59,7 @@ function displayProducts(products) {
 
 // Remplir le formulaire avec les données du produit sélectionné
 function editProduct(index) {
-    fetch(jsonBinUrl, { headers: { "X-Master-Key": "TON_CLE_API" } })
+    fetch(JSON_BIN_URL, { headers: { "X-Master-Key": JSON_BIN_KEY } })
         .then(response => response.json())
         .then(data => {
             const product = data.record[index];
@@ -73,8 +74,8 @@ function editProduct(index) {
 // Sauvegarder les modifications
 async function saveProduct() {
     try {
-        const response = await fetch(jsonBinUrl, {
-            headers: { "X-Master-Key": "TON_CLE_API" }
+        const response = await fetch(JSON_BIN_URL, {
+            headers: { "X-Master-Key": JSON_BIN_KEY }
         });
         const data = await response.json();
         let products = data.record;
@@ -86,10 +87,10 @@ async function saveProduct() {
             image: products[currentProductId].image
         };
 
-        await fetch(jsonBinUrl, {
+        await fetch(JSON_BIN_URL, {
             method: "PUT",
             headers: {
-                "X-Master-Key": "TON_CLE_API",
+                "X-Master-Key": JSON_BIN_KEY,
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(products)
@@ -104,18 +105,18 @@ async function saveProduct() {
 // Supprimer un produit
 async function deleteProduct() {
     try {
-        const response = await fetch(jsonBinUrl, {
-            headers: { "X-Master-Key": "TON_CLE_API" }
+        const response = await fetch(JSON_BIN_URL, {
+            headers: { "X-Master-Key": JSON_BIN_KEY }
         });
         const data = await response.json();
         let products = data.record;
 
         products.splice(currentProductId, 1);
 
-        await fetch(jsonBinUrl, {
+        await fetch(JSON_BIN_URL, {
             method: "PUT",
             headers: {
-                "X-Master-Key": "TON_CLE_API",
+                "X-Master-Key": JSON_BIN_KEY,
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(products)
