@@ -5,8 +5,12 @@ body {
     padding: 0;
     background-color: #1b1b1b;
     color: #ffffff;
+    height: 100%;
 }
-
+main {
+    display: block;
+    height: 100%;
+}
 /* En-tête */
 header {
     background-color: #F72585;
@@ -33,7 +37,7 @@ header h1 {
 .content {
     display: flex;
     justify-content: space-between;
-    padding: 20px;
+   /* padding: 20px;*/
 }
 
 /* Liste des boissons */
@@ -104,8 +108,9 @@ header h1 {
     width: 35%;
     background-color: #fff;
     padding: 20px;
-    border-radius: 10px;
     color: #333;
+    height: 100%;
+    
 }
 
 #edit-section h2 {
